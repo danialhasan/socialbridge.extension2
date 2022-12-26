@@ -1,4 +1,7 @@
 'use strict';
+// import * as dotenv from 'dotenv';
+// dotenv.config();
+// console.log(process);
 
 // With background scripts you can communicate with popup
 // and contentScript files.
@@ -18,4 +21,12 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       message,
     });
   }
+});
+
+chrome.action.onClicked.addListener((tab) => {
+  console.log('clicked');
+  chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    files: ['content-script.js'],
+  });
 });

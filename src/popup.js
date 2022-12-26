@@ -61,9 +61,9 @@ import './popup.css';
 
         // Communicate with content script of
         // active tab by sending a message
+        // NOTE: Messages to content scripts are bugged for some reason.
         chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
           const tab = tabs[0];
-
           chrome.tabs.sendMessage(
             tab.id,
             {

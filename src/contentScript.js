@@ -1,5 +1,5 @@
 'use strict';
-
+console.log('CONTENT SCRIPT LOADED');
 // Content script file will run in the context of web page.
 // With content script you can manipulate the web pages using
 // Document Object Model (DOM).
@@ -38,6 +38,5 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
   // Send an empty response
   // See https://github.com/mozilla/webextension-polyfill/issues/130#issuecomment-531531890
-  sendResponse({});
   return true;
 });
