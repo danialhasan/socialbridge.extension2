@@ -1,4 +1,5 @@
 'use strict';
+import axios from 'axios';
 console.log('CONTENT SCRIPT LOADED');
 // Content script file will run in the context of web page.
 // With content script you can manipulate the web pages using
@@ -16,7 +17,7 @@ const pageTitle = document.head.getElementsByTagName('title')[0].innerHTML;
 console.log(
   `Page title is: '${pageTitle}' - evaluated by Chrome extension's 'contentScript.js' file`
 );
-
+axios.get('http://localhost:3000/api');
 // Communicate with background file by sending a message
 chrome.runtime.sendMessage(
   {
@@ -35,8 +36,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.type === 'COUNT') {
     console.log(`Current count is ${request.payload.count}`);
   }
-
   // Send an empty response
   // See https://github.com/mozilla/webextension-polyfill/issues/130#issuecomment-531531890
+  sendResponse({});
   return true;
 });

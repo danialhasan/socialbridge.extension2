@@ -13,14 +13,14 @@
     "service_worker": "background.js"
   },
   "action": {
-    "default_title": "My Extension",
+    "default_title": "SocialBridge",
     "default_popup": "popup.html"
   },
   "permissions": ["storage", "activeTab", "scripting"],
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["contentScript.js"]
+      "matches": ["https://*.notion.so/*"],
+      "js": ["contentScript.js", "notionScript.js"]
     }
   ]
 }
